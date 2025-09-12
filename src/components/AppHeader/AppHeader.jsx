@@ -12,6 +12,7 @@ function AppHeader() {
   const [openOption, setOpenOption] = useState(false);
   const [option, setOption] = useState({ adult: 1, children: 0, rooms: 1 });
 
+  // set a new object for Guests component
   const handleOption = (type, action) =>
     setOption((prev) => ({
       ...prev,
@@ -53,17 +54,23 @@ function AppHeader() {
         <div
           onClick={() => setOpenOption(!openOption)}
           className="flex items-center justify-between gap-x-2 flex-1 relative"
+          id="guestId"
         >
           <UsersIcon className="w-9 h-9 text-fuchsia-500 cursor-pointer" />
           <div
             type="text"
             className="w-full outline-none placeholder-gray-400 text-sm"
           >
-            {option.adult} Adualt . {option.children} Children . {option.rooms}
+            {option.adult} Adualt &bull; {option.children} Children &bull;{"  "}
+            {option.rooms}
             Room
           </div>
           {openOption && (
-            <GuestsOptionList handleOption={handleOption} option={option} />
+            <GuestsOptionList
+              handleOption={handleOption}
+              option={option}
+              setOpenOption={setOpenOption}
+            />
           )}
         </div>
 
