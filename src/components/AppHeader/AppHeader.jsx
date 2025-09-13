@@ -6,11 +6,23 @@ import {
 } from "@heroicons/react/24/solid";
 import { useState } from "react";
 import GuestsOptionList from "./GuestsoptionList";
+import "react-date-range/dist/styles.css"; // main style file
+import "react-date-range/dist/theme/default.css"; // theme css file
+import { DateRange } from "react-date-range";
+import { format } from "date-fns";
 
 function AppHeader() {
   const [destination, setDestination] = useState();
   const [openOption, setOpenOption] = useState(false);
   const [option, setOption] = useState({ adult: 1, children: 0, rooms: 1 });
+  const [openDate, setOpenDate] = useState(false);
+  const [date, setDate] = useState([
+    {
+      startDate: new Date(),
+      endDate: new Date(),
+      key: "selection",
+    },
+  ]);
 
   // set a new object for Guests component
   const handleOption = (type, action) =>
@@ -20,9 +32,9 @@ function AppHeader() {
     }));
 
   return (
-    <div className="flex items-center justify-between mt-6 px-6">
+    <div className="flex items-center justify-between mt-6 mb-10">
       {/* Logo / Home */}
-      <button className="text-xl font-semibold text-gray-700 hover:text-red-500 transition cursor-pointer">
+      <button className="text-3xl font-semibold text-gray-700 hover:text-red-500 transition cursor-pointer">
         MyBooking
       </button>
 
@@ -40,14 +52,28 @@ function AppHeader() {
           />
         </div>
 
-        {/* Days */}
-        <div className="flex items-center gap-x-2 flex-1 border-r pr-4">
+        {/* Date */}
+        <div className="flex items-center gap-x-2 flex-1 border-r pr-4 relative cursor-pointer">
           <CalendarIcon className="w-9 h-9 text-purple-500" />
-          <input
+          <div
+            onClick={() => setOpenDate(!openDate)}
             type="text"
             placeholder="Add dates"
             className="w-full outline-none placeholder-gray-400 text-sm"
-          />
+          >{`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(
+            date[0].endDate,
+            "MM/dd/yyyy"
+          )}`}</div>
+          <div className="absolute top-10 right-0 shadow">
+            {openDate && (
+              <DateRange
+                ranges={date}
+                onChange={(item) => setDate([item.selection])}
+                minDate={new Date()}
+                moveRangeOnFirstSelection={true}
+              />
+            )}
+          </div>
         </div>
 
         {/* Guests & function to open/close option component*/}
@@ -59,7 +85,7 @@ function AppHeader() {
           <UsersIcon className="w-9 h-9 text-fuchsia-500 cursor-pointer" />
           <div
             type="text"
-            className="w-full outline-none placeholder-gray-400 text-sm"
+            className="w-full outline-none placeholder-gray-400 text-sm cursor-pointer"
           >
             {option.adult} Adualt &bull; {option.children} Children &bull;{"  "}
             {option.rooms}

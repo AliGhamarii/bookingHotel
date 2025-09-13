@@ -10,6 +10,7 @@ function GuestsOptionList({ handleOption, option, setOpenOption }) {
     <div
       ref={optionRef}
       className="absolute top-9 w-60 py-5 px-6 bg-white rounded-2xl shadow flex flex-col gap-y-3"
+      onClick={(e) => e.stopPropagation()}
     >
       <OptionItem
         type="adult"
