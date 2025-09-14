@@ -6,13 +6,15 @@ import {
 } from "@heroicons/react/24/solid";
 import { useState } from "react";
 import GuestsOptionList from "./GuestsoptionList";
-import "react-date-range/dist/styles.css"; // main style file
-import "react-date-range/dist/theme/default.css"; // theme css file
+import "react-date-range/dist/styles.css";
+import "react-date-range/dist/theme/default.css";
 import { DateRange } from "react-date-range";
 import { format } from "date-fns";
+import { createSearchParams, useNavigate } from "react-router-dom";
 
 function AppHeader() {
-  const [destination, setDestination] = useState();
+  //hooks
+  const [destination, setDestination] = useState("");
   const [openOption, setOpenOption] = useState(false);
   const [option, setOption] = useState({ adult: 1, children: 0, rooms: 1 });
   const [openDate, setOpenDate] = useState(false);
@@ -23,7 +25,9 @@ function AppHeader() {
       key: "selection",
     },
   ]);
+  const navigate = useNavigate();
 
+  // functions.
   // set a new object for Guests component
   const handleOption = (type, action) =>
     setOption((prev) => ({
@@ -31,10 +35,23 @@ function AppHeader() {
       [type]: action === "dec" ? prev[type] - 1 : prev[type] + 1,
     }));
 
+  // navigate to route /hotels & send all dataes in appHeader with navigate function.
+  const handleSearch = () => {
+    // object to string
+    const encodedParams = createSearchParams({
+      date: JSON.stringify(date),
+      destination,
+      option: JSON.stringify(option),
+    });
+    // setSearchParams(encodedParams);
+    navigate({ pathname: "/hotels", search: encodedParams.toString() });
+  };
+
+  // jsx
   return (
-    <div className="flex items-center justify-between mt-6 mb-10">
+    <div className="flex items-center justify-between mb-10">
       {/* Logo / Home */}
-      <button className="text-3xl font-semibold text-gray-700 hover:text-red-500 transition cursor-pointer">
+      <button className="text-3xl font-bold text-gray-700 hover:text-red-500 transition cursor-pointer">
         MyBooking
       </button>
 
@@ -46,7 +63,7 @@ function AppHeader() {
           <input
             type="text"
             placeholder="Where to?"
-            className="w-full outline-none placeholder-gray-400 text-sm"
+            className="w-full outline-none text-base font-medium text-gray-700 placeholder-gray-400 focus:text-red-600 focus:placeholder-red-400 transition"
             value={destination}
             onChange={(e) => setDestination(e.target.value)}
           />
@@ -54,16 +71,20 @@ function AppHeader() {
 
         {/* Date */}
         <div className="flex items-center gap-x-2 flex-1 border-r pr-4 relative cursor-pointer">
-          <CalendarIcon className="w-9 h-9 text-purple-500" />
+          <CalendarIcon className="w-9 h-9 text-blue-500" />
           <div
             onClick={() => setOpenDate(!openDate)}
             type="text"
             placeholder="Add dates"
             className="w-full outline-none placeholder-gray-400 text-sm"
-          >{`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(
-            date[0].endDate,
-            "MM/dd/yyyy"
-          )}`}</div>
+          >
+            <span className="w-full text-base font-medium text-blue-700 tracking-wide">
+              {`${format(date[0].startDate, "MMM dd")} - ${format(
+                date[0].endDate,
+                "MMM dd"
+              )}`}
+            </span>
+          </div>
           <div className="absolute top-10 right-0 shadow">
             {openDate && (
               <DateRange
@@ -83,14 +104,11 @@ function AppHeader() {
           id="guestId"
         >
           <UsersIcon className="w-9 h-9 text-fuchsia-500 cursor-pointer" />
-          <div
-            type="text"
-            className="w-full outline-none placeholder-gray-400 text-sm cursor-pointer"
-          >
-            {option.adult} Adualt &bull; {option.children} Children &bull;{"  "}
-            {option.rooms}
+          <span className="w-full text-base font-semibold text-fuchsia-600 cursor-pointer">
+            {option.adult} Adult • {option.children} Children • {option.rooms}{" "}
             Room
-          </div>
+          </span>
+
           {openOption && (
             <GuestsOptionList
               handleOption={handleOption}
@@ -101,7 +119,10 @@ function AppHeader() {
         </div>
 
         {/* Search button */}
-        <button className="flex items-center justify-center bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white rounded-full w-12 h-12 shadow-md transition duration-300 cursor-pointer">
+        <button
+          onClick={handleSearch}
+          className="flex items-center justify-center bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white rounded-full w-12 h-12 shadow-md transition duration-300 cursor-pointer"
+        >
           <MagnifyingGlassIcon className="w-6 h-6" />
         </button>
       </div>
