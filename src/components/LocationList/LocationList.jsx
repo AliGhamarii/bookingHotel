@@ -33,12 +33,15 @@ function LocationList() {
 
               {/* امکانات اتاق */}
               <p className="text-gray-500 text-sm mt-1">
-                🛏 {location.beds} Beds • 🛁 {location.bathrooms} Baths • 🛋 {location.bedrooms} Rooms
+                🛏 {location.beds} Beds • 🛁 {location.bathrooms} Baths • 🛋{" "}
+                {location.bedrooms} Rooms
               </p>
 
               {/* قیمت */}
               <div className="mt-2">
-                <span className="text-blue-600 font-bold">€{location.price} / night</span>
+                <span className="text-blue-600 font-bold">
+                  €{location.price} / night
+                </span>
               </div>
 
               {/* میزبان */}
@@ -48,12 +51,15 @@ function LocationList() {
                   alt={location.host_name}
                   className="w-8 h-8 rounded-full mr-2"
                 />
-                <span className="text-gray-700 text-sm">{location.host_name}</span>
+                <span className="text-gray-700 text-sm">
+                  {location.host_name}
+                </span>
               </div>
 
               {/* امتیاز و تعداد بازبینی */}
               <div className="mt-2 text-sm text-yellow-500">
-                ⭐ {location.review_scores_rating} ({location.number_of_reviews} reviews)
+                ⭐ {location.review_scores_rating} ({location.number_of_reviews}{" "}
+                reviews)
               </div>
 
               {/* لینک به Airbnb */}

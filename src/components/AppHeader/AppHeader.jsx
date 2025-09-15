@@ -25,7 +25,6 @@ function AppHeader() {
       key: "selection",
     },
   ]);
-  const navigate = useNavigate();
 
   // functions.
   // set a new object for Guests component
@@ -34,6 +33,9 @@ function AppHeader() {
       ...prev,
       [type]: action === "dec" ? prev[type] - 1 : prev[type] + 1,
     }));
+
+  // function to route
+  const navigate = useNavigate();
 
   // navigate to route /hotels & send all dataes in appHeader with navigate function.
   const handleSearch = () => {
@@ -51,7 +53,10 @@ function AppHeader() {
   return (
     <div className="flex items-center justify-between mb-10">
       {/* Logo / Home */}
-      <button className="text-3xl font-bold text-gray-700 hover:text-red-500 transition cursor-pointer">
+      <button
+        onClick={() => navigate("/")}
+        className="text-3xl font-bold text-gray-700 hover:text-red-500 transition cursor-pointer"
+      >
         MyBooking
       </button>
 

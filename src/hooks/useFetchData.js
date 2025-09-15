@@ -2,23 +2,15 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
-function useFetchData(url) {
+function useFetchData(url, query = "") {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    // axios
-    //   .get(url)
-    //   .then((res) => {
-    //     setData(res.data);
-    //   })
-    //   .catch((err) => {
-    //     toast.error(err.response?.data || err.message);
-    //   });
     const fetchData = async () => {
       try {
         setIsLoading(true);
-        const { data } = await axios.get(url);
+        const { data } = await axios.get(`${url}?${query}`);
         setData(data);
       } catch (err) {
         toast.error(err.response?.data || err.message);
@@ -27,7 +19,7 @@ function useFetchData(url) {
       }
     };
     fetchData();
-  }, [url]);
+  }, [url, query]);
   return { data, isLoading };
 }
 export default useFetchData;
