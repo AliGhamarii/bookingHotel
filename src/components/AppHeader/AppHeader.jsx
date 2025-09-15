@@ -10,11 +10,19 @@ import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import { DateRange } from "react-date-range";
 import { format } from "date-fns";
-import { createSearchParams, useNavigate } from "react-router-dom";
+import {
+  createSearchParams,
+  useNavigate,
+  useSearchParams,
+} from "react-router-dom";
 
 function AppHeader() {
   //hooks
-  const [destination, setDestination] = useState("");
+  const [searchParams] = useSearchParams();
+
+  const [destination, setDestination] = useState(
+    searchParams.get("destination")
+  );
   const [openOption, setOpenOption] = useState(false);
   const [option, setOption] = useState({ adult: 1, children: 0, rooms: 1 });
   const [openDate, setOpenDate] = useState(false);
