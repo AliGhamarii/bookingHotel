@@ -12,7 +12,7 @@ function HotelProvider({ children }) {
   // get data from backend.
   const { isLoading, data: hotels } = useFetchData(
     "http://localhost:5000/hotels",
-    `q=${destination || ""}&accommodates_gte=${rooms || 1}`
+    `q=${destination || " "}&accommodates_gte=${rooms || 1}`
   );
   return (
     <HotelContext.Provider value={{ hotels, isLoading }}>

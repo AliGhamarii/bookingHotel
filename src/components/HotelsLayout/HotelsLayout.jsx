@@ -3,8 +3,8 @@ import Map from "../Map/Map";
 
 function HotelsLayout() {
   return (
-    <div className="w-full min-h-screen flex">
-      <div className="w-1/2">
+    <div className="w-full max-h-screen flex">
+      <div className="w-[40%] mr-10">
         <Outlet />
       </div>
       <Map />

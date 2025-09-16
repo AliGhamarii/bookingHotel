@@ -19,9 +19,8 @@ import {
 function AppHeader() {
   //hooks
   const [searchParams] = useSearchParams();
-
   const [destination, setDestination] = useState(
-    searchParams.get("destination")
+    searchParams.get("destination") || ""
   );
   const [openOption, setOpenOption] = useState(false);
   const [option, setOption] = useState({ adult: 1, children: 0, rooms: 1 });

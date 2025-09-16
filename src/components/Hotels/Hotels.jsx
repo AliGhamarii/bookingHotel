@@ -7,16 +7,16 @@ function Hotels() {
   if (isLoading) return <Loading />;
 
   return (
-    <div className="p-6">
+    <div className="h-[750px] overflow-y-auto">
       <h1 className="text-2xl font-bold mb-8 text-gray-800">
         Your Searches Result ({hotels.length})
       </h1>
 
-      <div className="grid gap-6">
+      <div className="flex flex-col gap-6 px-5">
         {hotels.map((hotel) => (
           <Link
             key={hotel.id}
-            to={`/hotels/${hotel.id}?lat=${hotel.latitude}&long=${hotel.longitude}`}
+            to={`/hotels/${hotel.id}?lat=${hotel.latitude}&lng=${hotel.longitude}`}
             target="_blank"
             className="block hover:scale-[1.02] transition-transform duration-200"
           >
