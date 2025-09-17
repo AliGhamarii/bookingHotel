@@ -1,33 +1,34 @@
 import { useParams } from "react-router-dom";
-import useFetchData from "../../hooks/useFetchData";
 import Loading from "../Loading/Loading";
+import { useEffect } from "react";
+import useHotels from "../../hooks/useHotels";
 
 function SingleHotel() {
   const { id } = useParams();
-  const { data, isLoading, error } = useFetchData(
-    `http://localhost:5000/hotels/${id}`
-  );
+  const { getCurrentHottel, isLoadingCurrentHottel, currentHottel } =
+    useHotels();
 
-  if (isLoading) return <Loading />;
-  if (error)
-    return (
-      <div className="text-red-500 text-center mt-10">
-        Error fetching hotel data.
-      </div>
-    );
+  // send id hotel to hotel context
+  useEffect(() => {
+    getCurrentHottel(id);
+  }, [id]);
 
-  if (!data) return <div className="text-center mt-10">Hotel not found.</div>;
+  // triger loader
+  if (isLoadingCurrentHottel || !currentHottel) return <Loading />;
+
+  if (!currentHottel)
+    return <div className="text-center mt-10">Hotel not found.</div>;
 
   return (
     <div className="w-full h-[700px] overflow-y-scroll p-6 bg-white shadow-lg">
       {/* Hotel Name */}
-      <h1 className="text-3xl font-bold mb-4">{data.name}</h1>
+      <h1 className="text-3xl font-bold mb-4">{currentHottel.name}</h1>
 
       {/* Hero Image */}
-      {data.picture_url?.url ? (
+      {currentHottel.picture_url?.url ? (
         <img
-          src={data.picture_url.url}
-          alt={data.name}
+          src={currentHottel.picture_url.url}
+          alt={currentHottel.name}
           className="w-full h-64 object-cover rounded-lg shadow mb-4"
         />
       ) : (
@@ -40,54 +41,57 @@ function SingleHotel() {
       <div className="grid grid-cols-1 gap-2 mb-4 text-gray-700">
         <p>
           <span className="font-semibold">Property Type:</span>{" "}
-          {data.property_type}
+          {currentHottel.property_type}
         </p>
         <p>
-          <span className="font-semibold">Room Type:</span> {data.room_type}
+          <span className="font-semibold">Room Type:</span>{" "}
+          {currentHottel.room_type}
         </p>
         <p>
-          <span className="font-semibold">Price:</span> ${data.price}
+          <span className="font-semibold">Price:</span> ${currentHottel.price}
         </p>
         <p>
           <span className="font-semibold">Accommodates:</span>{" "}
-          {data.accommodates} guest(s)
+          {currentHottel.accommodates} guest(s)
         </p>
         <p>
-          <span className="font-semibold">City:</span> {data.city}
+          <span className="font-semibold">City:</span> {currentHottel.city}
         </p>
         <p>
-          <span className="font-semibold">State:</span> {data.state}
+          <span className="font-semibold">State:</span> {currentHottel.state}
         </p>
       </div>
 
       {/* Description */}
       <div className="mb-4">
         <h2 className="text-xl font-semibold mb-2">Description</h2>
-        <p className="text-gray-700 mb-2">{data.summary}</p>
-        <p className="text-gray-700">{data.description}</p>
+        <p className="text-gray-700 mb-2">{currentHottel.summary}</p>
+        <p className="text-gray-700">{currentHottel.description}</p>
       </div>
 
       {/* Host Info */}
-      {data.host_name && (
+      {currentHottel.host_name && (
         <div className="flex items-center mb-4">
           <img
-            src={data.host_picture_url}
-            alt={data.host_name}
+            src={currentHottel.host_picture_url}
+            alt={currentHottel.host_name}
             className="w-12 h-12 rounded-full mr-3 shadow"
           />
           <div>
-            <p className="font-semibold">{data.host_name}</p>
-            <p className="text-gray-600 text-sm">{data.host_location}</p>
+            <p className="font-semibold">{currentHottel.host_name}</p>
+            <p className="text-gray-600 text-sm">
+              {currentHottel.host_location}
+            </p>
           </div>
         </div>
       )}
 
       {/* Amenities */}
-      {data.amenities?.length > 0 && (
+      {currentHottel.amenities?.length > 0 && (
         <div>
           <h2 className="text-xl font-semibold mb-2">Amenities</h2>
           <ul className="list-disc list-inside text-gray-700 grid grid-cols-2 gap-1">
-            {data.amenities.map((item, idx) => (
+            {currentHottel.amenities.map((item, idx) => (
               <li key={idx}>{item}</li>
             ))}
           </ul>

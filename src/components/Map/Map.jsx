@@ -34,7 +34,7 @@ function Map() {
     <div className="w-[60%] min-h-screen">
       <MapContainer
         center={mapCenter}
-        zoom={isSingleHotel ? 15 : 4}
+        zoom={isSingleHotel ? 15 : 10}
         scrollWheelZoom={true}
         className="h-[700px] w-full rounded-lg shadow"
       >

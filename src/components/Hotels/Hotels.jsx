@@ -3,7 +3,7 @@ import Loading from "../Loading/Loading";
 import useHotels from "../../hooks/useHotels";
 
 function Hotels() {
-  const { hotels, isLoading } = useHotels();
+  const { hotels, isLoading, currentHottel } = useHotels();
   if (isLoading) return <Loading />;
 
   return (
@@ -17,10 +17,14 @@ function Hotels() {
           <Link
             key={hotel.id}
             to={`/hotels/${hotel.id}?lat=${hotel.latitude}&lng=${hotel.longitude}`}
-            target="_blank"
+            // target="_blank"
             className="block hover:scale-[1.02] transition-transform duration-200"
           >
-            <div className="flex gap-4 bg-white shadow-md rounded-2xl overflow-hidden hover:shadow-xl transition-shadow">
+            <div
+              className={`flex gap-4 bg-white shadow-md rounded-2xl overflow-hidden hover:shadow-xl transition-shadow ${
+                currentHottel?.id === hotel.id ? "border-2 border-red-400 " : ""
+              }`}
+            >
               <img
                 src={hotel.picture_url.url}
                 alt={hotel.name}
