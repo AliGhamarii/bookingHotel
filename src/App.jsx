@@ -2,9 +2,9 @@ import { Route, Routes } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 import LocationList from "./components/LocationList/LocationList";
 import HotelsLayout from "./components/HotelsLayout/HotelsLayout";
-import SingleHotel from "./components/HotelsLayout/SingleHotel";
 import Hotels from "./components/Hotels/Hotels";
 import HotelProvider from "./context/hotelContext/HotelProvider";
+import SingleHotel from "./components/SingleHotel/SingleHotel";
 
 function App() {
   return (

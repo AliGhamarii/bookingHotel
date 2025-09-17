@@ -82,7 +82,7 @@ function AppHeader() {
         </div>
 
         {/* Date */}
-        <div className="flex items-center gap-x-2 flex-1 border-r pr-4 relative cursor-pointer">
+        <div className="flex items-center gap-x-2 flex-1 border-r pr-4 relative cursor-pointer z-10000">
           <CalendarIcon className="w-9 h-9 text-blue-500" />
           <div
             onClick={() => setOpenDate(!openDate)}
@@ -112,7 +112,7 @@ function AppHeader() {
         {/* Guests & function to open/close option component*/}
         <div
           onClick={() => setOpenOption(!openOption)}
-          className="flex items-center justify-between gap-x-2 flex-1 relative"
+          className="flex items-center justify-between gap-x-2 flex-1 relative z-1000"
           id="guestId"
         >
           <UsersIcon className="w-9 h-9 text-fuchsia-500 cursor-pointer" />
