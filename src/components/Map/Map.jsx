@@ -6,10 +6,11 @@ import "leaflet/dist/leaflet.css";
 import { useSearchParams } from "react-router-dom";
 import ChangeCenter from "./ChangeCenter";
 import useGeoLocation from "../../hooks/useGeoLocation";
+import DetectClick from "../BookmarkLayout/detectClick";
 
-function Map() {
+function Map({ markerLocation }) {
   const [mapCenter, setMapCenter] = useState([51.505, -0.09]);
-  const { hotels, isLoading } = useHotels();
+  const { isLoading } = useHotels();
   const [searchParams] = useSearchParams();
   const { getGeoPosition, isLoadingPosition, geoPosition, error } =
     useGeoLocation();
@@ -48,9 +49,10 @@ function Map() {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+        <DetectClick />
         <ChangeCenter position={mapCenter} />
 
-        {hotels.map((hotel) => (
+        {markerLocation.map((hotel) => (
           <Marker key={hotel.id} position={[hotel.latitude, hotel.longitude]}>
             <Popup>{hotel.host_location}</Popup>
           </Marker>

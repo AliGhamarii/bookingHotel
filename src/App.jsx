@@ -5,6 +5,7 @@ import HotelsLayout from "./components/HotelsLayout/HotelsLayout";
 import Hotels from "./components/Hotels/Hotels";
 import HotelProvider from "./context/hotelContext/HotelProvider";
 import SingleHotel from "./components/SingleHotel/SingleHotel";
+import BookmarkLayout from "./components/BookmarkLayout/BookmarkLayout";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route index element={<Hotels />} />
             <Route path=":id" element={<SingleHotel />} />
           </Route>
+          <Route path="/bookmark" element={<BookmarkLayout />} />
         </Routes>
       </Layout>
     </HotelProvider>
