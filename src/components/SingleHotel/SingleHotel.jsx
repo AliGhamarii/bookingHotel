@@ -1,13 +1,14 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Loading from "../Loading/Loading";
 import { useEffect } from "react";
 import useHotels from "../../hooks/useHotels";
+import { ChevronLeftIcon } from "@heroicons/react/24/solid";
 
 function SingleHotel() {
   const { id } = useParams();
   const { getCurrentHottel, isLoadingCurrentHottel, currentHottel } =
     useHotels();
-
+  const navigate = useNavigate();
   // send id hotel to hotel context
   useEffect(() => {
     getCurrentHottel(id);
@@ -22,7 +23,17 @@ function SingleHotel() {
   return (
     <div className="w-full h-[700px] overflow-y-scroll p-6 bg-white shadow-lg">
       {/* Hotel Name */}
-      <h1 className="text-3xl font-bold mb-4">{currentHottel.name}</h1>
+      <div className="flex justify-between items-center mb-2">
+        <h1 className="text-3xl font-bold mb-4 max-w-[90%]">
+          {currentHottel.name}
+        </h1>
+        <button
+          onClick={() => navigate(-1)}
+          className="w-8 h-8 bg-gray-400 hover:bg-red-600 transition-colors rounded-full flex items-center justify-center shadow-md cursor-pointer"
+        >
+          <ChevronLeftIcon className="text-white w-6 h-6" />
+        </button>
+      </div>
 
       {/* Hero Image */}
       {currentHottel.picture_url?.url ? (

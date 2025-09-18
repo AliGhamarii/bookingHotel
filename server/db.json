@@ -1290,49 +1290,134 @@
   ],
   "bookmarks": [
     {
+      "id": 1,
       "cityName": "Abalessa",
       "country": "Algeria",
       "countryCode": "DZ",
+      "flag": "🇩🇿",
       "latitude": "23.18455079512732",
       "longitude": "3.795523257510883",
-      "host_location": "Abalessa Algeria",
-      "id": 1
+      "host_location": "Abalessa, Algeria",
+      "population": 15000,
+      "area": 50.5,
+      "elevation": 1100,
+      "timezone": "Africa/Algiers (+01:00)",
+      "weather": {
+        "averageTempC": 25.3,
+        "rainfallMmPerYear": 150,
+        "conditions": "Semi-arid"
+      },
+      "officialLanguage": "Arabic",
+      "currency": "Algerian Dinar (DZD)",
+      "neighboringCities": [
+        { "name": "Tamanrasset", "distanceKm": 200 },
+        { "name": "Illizi", "distanceKm": 350 }
+      ],
+      "landmark": "Rock engravings"
     },
     {
+      "id": 2,
       "cityName": "Mahidasht",
-      "country": "Iran (Islamic Republic of)",
+      "country": "Iran",
       "countryCode": "IR",
+      "flag": "🇮🇷",
       "latitude": "34.32869425037187",
       "longitude": "46.724183117022086",
-      "host_location": "Mahidasht Iran (Islamic Republic of)",
-      "id": 4
+      "host_location": "Mahidasht, Iran",
+      "population": 22000,
+      "area": 30.3,
+      "elevation": 1350,
+      "timezone": "Asia/Tehran (+03:30)",
+      "weather": {
+        "averageTempC": 20.5,
+        "rainfallMmPerYear": 350,
+        "conditions": "Mediterranean continental"
+      },
+      "officialLanguage": "Persian",
+      "currency": "Iranian Rial (IRR)",
+      "neighboringCities": [
+        { "name": "Kermanshah", "distanceKm": 25 },
+        { "name": "Eslamabad-e Gharb", "distanceKm": 50 }
+      ],
+      "landmark": "Mahidasht Plain"
     },
     {
+      "id": 3,
       "cityName": "Sanandaj",
-      "country": "Iran (Islamic Republic of)",
+      "country": "Iran",
       "countryCode": "IR",
+      "flag": "🇮🇷",
       "latitude": "35.31372444726279",
       "longitude": "47.03114358752335",
-      "host_location": "Sanandaj Iran (Islamic Republic of)",
-      "id": 5
+      "host_location": "Sanandaj, Iran",
+      "population": 430000,
+      "area": 150.0,
+      "elevation": 1530,
+      "timezone": "Asia/Tehran (+03:30)",
+      "weather": {
+        "averageTempC": 18.2,
+        "rainfallMmPerYear": 500,
+        "conditions": "Cold winters, mild summers"
+      },
+      "officialLanguage": "Kurdish, Persian",
+      "currency": "Iranian Rial (IRR)",
+      "neighboringCities": [
+        { "name": "Marivan", "distanceKm": 95 },
+        { "name": "Saqqez", "distanceKm": 140 }
+      ],
+      "landmark": "Sanandaj Bazaar"
     },
     {
+      "id": 4,
       "cityName": "A Dakhla Oasis",
       "country": "Egypt",
       "countryCode": "EG",
+      "flag": "🇪🇬",
       "latitude": "25.02090651422749",
       "longitude": "29.09059588509316",
-      "host_location": "A Dakhla Oasis Egypt",
-      "id": 7
+      "host_location": "A Dakhla Oasis, Egypt",
+      "population": 45000,
+      "area": 300.2,
+      "elevation": -10,
+      "timezone": "Africa/Cairo (+02:00)",
+      "weather": {
+        "averageTempC": 28.7,
+        "rainfallMmPerYear": 20,
+        "conditions": "Desert climate"
+      },
+      "officialLanguage": "Arabic",
+      "currency": "Egyptian Pound (EGP)",
+      "neighboringCities": [
+        { "name": "Farafra", "distanceKm": 180 },
+        { "name": "Balat", "distanceKm": 110 }
+      ],
+      "landmark": "Roman ruins"
     },
     {
+      "id": 5,
       "cityName": "Baba Kot",
       "country": "Pakistan",
       "countryCode": "PK",
+      "flag": "🇵🇰",
       "latitude": "28.43528783183169",
       "longitude": "67.78003711374224",
-      "host_location": "Baba Kot Pakistan",
-      "id": 8
+      "host_location": "Baba Kot, Pakistan",
+      "population": 18000,
+      "area": 40.0,
+      "elevation": 100,
+      "timezone": "Asia/Karachi (+05:00)",
+      "weather": {
+        "averageTempC": 30.0,
+        "rainfallMmPerYear": 200,
+        "conditions": "Hot semi-arid"
+      },
+      "officialLanguage": "Pashto, Urdu",
+      "currency": "Pakistani Rupee (PKR)",
+      "neighboringCities": [
+        { "name": "Dera Ismail Khan", "distanceKm": 120 },
+        { "name": "Quetta", "distanceKm": 280 }
+      ],
+      "landmark": "Local bazaar"
     }
   ]
 }
