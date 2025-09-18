@@ -11,13 +11,13 @@ function BookmarkProvider({ children }) {
   const [currentBookmark, setCurrentBookmark] = useState(null);
 
   // get data from backend.
-  const { isLoading, data: bookmarks } = useFetchData(baseUrl);
+  const { isLoading, data: bookmarks } = useFetchData(`${baseUrl}/bookmarks`);
 
   // set current bookmark
   async function getCurrentBookmark(id) {
     try {
       setIsLoadingCurrBookmark(true);
-      const { data } = await axios.get(`${baseUrl}/bookmark/${id}`);
+      const { data } = await axios.get(`${baseUrl}/bookmarks/${id}`);
       setCurrentBookmark(data);
     } catch (err) {
       setErrorCurrBookmark(err);
