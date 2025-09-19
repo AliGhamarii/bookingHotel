@@ -3,20 +3,17 @@ import useHotels from "../../hooks/useHotels";
 import Loading from "../Loading/Loading";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import { useSearchParams } from "react-router-dom";
 import ChangeCenter from "./ChangeCenter";
 import useGeoLocation from "../../hooks/useGeoLocation";
 import DetectClick from "../BookmarkLayout/detectClick";
+import useUrlLocation from "../../hooks/useUrlLocation";
 
 function Map({ markerLocation }) {
   const [mapCenter, setMapCenter] = useState([51.505, -0.09]);
   const { isLoading } = useHotels();
-  const [searchParams] = useSearchParams();
   const { getGeoPosition, isLoadingPosition, geoPosition, error } =
     useGeoLocation();
-
-  const lat = searchParams.get("lat");
-  const lng = searchParams.get("lng");
+  const [lat, lng] = useUrlLocation();
 
   const isSingleHotel = lat && lng;
 
@@ -51,7 +48,6 @@ function Map({ markerLocation }) {
         />
         <DetectClick />
         <ChangeCenter position={mapCenter} />
-
         {markerLocation.map((hotel) => (
           <Marker key={hotel.id} position={[hotel.latitude, hotel.longitude]}>
             <Popup>{hotel.host_location}</Popup>
