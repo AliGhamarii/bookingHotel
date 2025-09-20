@@ -49,7 +49,12 @@
       "host_neighbourhood": null,
       "host_listings_count": 1,
       "host_total_listings_count": 1,
-      "host_verifications": ["email", "phone", "facebook", "reviews"],
+      "host_verifications": [
+        "email",
+        "phone",
+        "facebook",
+        "reviews"
+      ],
       "street": "Amsterdam, Noord-Holland 1054, Netherlands",
       "neighbourhood": null,
       "neighbourhood_cleansed": "De Baarsjes - Oud-West",
@@ -114,7 +119,9 @@
         "lon": 2.35,
         "lat": 48.86
       },
-      "features": ["Host Has Profile Pic"]
+      "features": [
+        "Host Has Profile Pic"
+      ]
     },
     {
       "id": "9192415",
@@ -305,7 +312,11 @@
       "host_neighbourhood": "Oud-West",
       "host_listings_count": 3,
       "host_total_listings_count": 3,
-      "host_verifications": ["email", "phone", "reviews"],
+      "host_verifications": [
+        "email",
+        "phone",
+        "reviews"
+      ],
       "street": "Oud-West, Amsterdam, North Holland 1054, Netherlands",
       "neighbourhood": "Oud-West",
       "neighbourhood_cleansed": "De Baarsjes - Oud-West",
@@ -374,7 +385,10 @@
         "lon": 4.875639539930118,
         "lat": 52.36456756846072
       },
-      "features": ["Host Has Profile Pic", "Is Location Exact"]
+      "features": [
+        "Host Has Profile Pic",
+        "Is Location Exact"
+      ]
     },
     {
       "id": "13153299",
@@ -695,7 +709,10 @@
       "host_neighbourhood": null,
       "host_listings_count": 1,
       "host_total_listings_count": 1,
-      "host_verifications": ["email", "reviews"],
+      "host_verifications": [
+        "email",
+        "reviews"
+      ],
       "street": "Amsterdam, North Holland, Netherlands",
       "neighbourhood": null,
       "neighbourhood_cleansed": "De Baarsjes - Oud-West",
@@ -765,7 +782,9 @@
         "lon": 4.865594943841575,
         "lat": 52.36667871194905
       },
-      "features": ["Host Has Profile Pic"]
+      "features": [
+        "Host Has Profile Pic"
+      ]
     },
     {
       "id": "13465532",
@@ -947,7 +966,11 @@
       "host_neighbourhood": null,
       "host_listings_count": 0,
       "host_total_listings_count": 0,
-      "host_verifications": ["email", "phone", "reviews"],
+      "host_verifications": [
+        "email",
+        "phone",
+        "reviews"
+      ],
       "street": "Amsterdam, NH 1056, Netherlands",
       "neighbourhood": null,
       "neighbourhood_cleansed": "De Baarsjes - Oud-West",
@@ -1021,7 +1044,9 @@
         "lon": 4.853345068114508,
         "lat": 52.37080138742488
       },
-      "features": ["Host Has Profile Pic"]
+      "features": [
+        "Host Has Profile Pic"
+      ]
     },
     {
       "id": "7890890",
@@ -1072,7 +1097,12 @@
       "host_neighbourhood": "Oud-West",
       "host_listings_count": 1,
       "host_total_listings_count": 1,
-      "host_verifications": ["email", "phone", "reviews", "jumio"],
+      "host_verifications": [
+        "email",
+        "phone",
+        "reviews",
+        "jumio"
+      ],
       "street": "Oud-West, Amsterdam, Noord-Holland 1054, Netherlands",
       "neighbourhood": "Oud-West",
       "neighbourhood_cleansed": "De Baarsjes - Oud-West",
@@ -1206,7 +1236,12 @@
       "host_neighbourhood": "Oud-West",
       "host_listings_count": 2,
       "host_total_listings_count": 2,
-      "host_verifications": ["email", "phone", "reviews", "jumio"],
+      "host_verifications": [
+        "email",
+        "phone",
+        "reviews",
+        "jumio"
+      ],
       "street": "Oud-West, Amsterdam, Noord-Holland 1057, Netherlands",
       "neighbourhood": "Oud-West",
       "neighbourhood_cleansed": "De Baarsjes - Oud-West",
@@ -1291,133 +1326,63 @@
   "bookmarks": [
     {
       "id": 1,
-      "cityName": "Abalessa",
-      "country": "Algeria",
-      "countryCode": "DZ",
-      "flag": "🇩🇿",
-      "latitude": "23.18455079512732",
-      "longitude": "3.795523257510883",
-      "host_location": "Abalessa, Algeria",
-      "population": 15000,
-      "area": 50.5,
-      "elevation": 1100,
-      "timezone": "Africa/Algiers (+01:00)",
-      "weather": {
-        "averageTempC": 25.3,
-        "rainfallMmPerYear": 150,
-        "conditions": "Semi-arid"
-      },
-      "officialLanguage": "Arabic",
-      "currency": "Algerian Dinar (DZD)",
-      "neighboringCities": [
-        { "name": "Tamanrasset", "distanceKm": 200 },
-        { "name": "Illizi", "distanceKm": 350 }
-      ],
-      "landmark": "Rock engravings"
-    },
-    {
-      "id": 2,
-      "cityName": "Mahidasht",
-      "country": "Iran",
+      "city": "Lalejin",
+      "locality": "Lalejin",
+      "postcode": "",
+      "latitude": 34.972344323626494,
+      "longitude": 48.475971221923835,
+      "plusCode": "8H6CXFCG+W9",
+      "country": "Iran (Islamic Republic of)",
       "countryCode": "IR",
-      "flag": "🇮🇷",
-      "latitude": "34.32869425037187",
-      "longitude": "46.724183117022086",
-      "host_location": "Mahidasht, Iran",
-      "population": 22000,
-      "area": 30.3,
-      "elevation": 1350,
-      "timezone": "Asia/Tehran (+03:30)",
-      "weather": {
-        "averageTempC": 20.5,
-        "rainfallMmPerYear": 350,
-        "conditions": "Mediterranean continental"
-      },
-      "officialLanguage": "Persian",
-      "currency": "Iranian Rial (IRR)",
-      "neighboringCities": [
-        { "name": "Kermanshah", "distanceKm": 25 },
-        { "name": "Eslamabad-e Gharb", "distanceKm": 50 }
-      ],
-      "landmark": "Mahidasht Plain"
+      "province": "Hamadan Province",
+      "provinceCode": "IR-13",
+      "county": "Bahar County",
+      "district": "دهستان سفالگران",
+      "continent": "Asia",
+      "continentCode": "AS",
+      "timezone": "Asia/Tehran",
+      "lookupSource": "coordinates",
+      "localityLanguageRequested": "en"
     },
     {
-      "id": 3,
-      "cityName": "Sanandaj",
-      "country": "Iran",
+      "city": "Isfahan",
+      "locality": "Isfahan",
+      "country": "Iran (Islamic Republic of)",
       "countryCode": "IR",
-      "flag": "🇮🇷",
-      "latitude": "35.31372444726279",
-      "longitude": "47.03114358752335",
-      "host_location": "Sanandaj, Iran",
-      "population": 430000,
-      "area": 150.0,
-      "elevation": 1530,
-      "timezone": "Asia/Tehran (+03:30)",
-      "weather": {
-        "averageTempC": 18.2,
-        "rainfallMmPerYear": 500,
-        "conditions": "Cold winters, mild summers"
-      },
-      "officialLanguage": "Kurdish, Persian",
-      "currency": "Iranian Rial (IRR)",
-      "neighboringCities": [
-        { "name": "Marivan", "distanceKm": 95 },
-        { "name": "Saqqez", "distanceKm": 140 }
-      ],
-      "landmark": "Sanandaj Bazaar"
+      "province": "Isfahan Province",
+      "provinceCode": "IR-10",
+      "county": "Isfahan County",
+      "district": "",
+      "continent": "Asia",
+      "continentCode": "AS",
+      "latitude": "32.65989903665081",
+      "longitude": "51.66363716125489",
+      "plusCode": "8H4HMM57+XF",
+      "timezone": "Asia/Tehran",
+      "lookupSource": "coordinates",
+      "localityLanguageRequested": "en",
+      "postcode": "",
+      "id": 5
     },
     {
-      "id": 4,
-      "cityName": "A Dakhla Oasis",
-      "country": "Egypt",
-      "countryCode": "EG",
-      "flag": "🇪🇬",
-      "latitude": "25.02090651422749",
-      "longitude": "29.09059588509316",
-      "host_location": "A Dakhla Oasis, Egypt",
-      "population": 45000,
-      "area": 300.2,
-      "elevation": -10,
-      "timezone": "Africa/Cairo (+02:00)",
-      "weather": {
-        "averageTempC": 28.7,
-        "rainfallMmPerYear": 20,
-        "conditions": "Desert climate"
-      },
-      "officialLanguage": "Arabic",
-      "currency": "Egyptian Pound (EGP)",
-      "neighboringCities": [
-        { "name": "Farafra", "distanceKm": 180 },
-        { "name": "Balat", "distanceKm": 110 }
-      ],
-      "landmark": "Roman ruins"
-    },
-    {
-      "id": 5,
-      "cityName": "Baba Kot",
-      "country": "Pakistan",
-      "countryCode": "PK",
-      "flag": "🇵🇰",
-      "latitude": "28.43528783183169",
-      "longitude": "67.78003711374224",
-      "host_location": "Baba Kot, Pakistan",
-      "population": 18000,
-      "area": 40.0,
-      "elevation": 100,
-      "timezone": "Asia/Karachi (+05:00)",
-      "weather": {
-        "averageTempC": 30.0,
-        "rainfallMmPerYear": 200,
-        "conditions": "Hot semi-arid"
-      },
-      "officialLanguage": "Pashto, Urdu",
-      "currency": "Pakistani Rupee (PKR)",
-      "neighboringCities": [
-        { "name": "Dera Ismail Khan", "distanceKm": 120 },
-        { "name": "Quetta", "distanceKm": 280 }
-      ],
-      "landmark": "Local bazaar"
+      "city": "Brussels",
+      "locality": "Brussels",
+      "country": "Belgium",
+      "countryCode": "BE",
+      "province": "Bruxelles-Capitale",
+      "provinceCode": "BE-BRU",
+      "county": "",
+      "district": "Brussels",
+      "continent": "Europe",
+      "continentCode": "EU",
+      "latitude": "50.84334576550848",
+      "longitude": "4.348440170288087",
+      "plusCode": "9F26R8VX+89",
+      "timezone": "Europe/Brussels",
+      "lookupSource": "coordinates",
+      "localityLanguageRequested": "en",
+      "postcode": "1000",
+      "id": 6
     }
   ]
 }

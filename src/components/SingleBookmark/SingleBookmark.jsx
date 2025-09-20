@@ -6,8 +6,7 @@ import { ChevronLeftIcon } from "@heroicons/react/24/solid";
 import ReactCountryFlag from "react-country-flag";
 
 function SingleBookmark() {
-  const { getCurrentBookmark, isLoadingCurrBookmark, currentBookmark } =
-    useBookmark();
+  const { getCurrentBookmark, isLoading, currentBookmark } = useBookmark();
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -15,7 +14,7 @@ function SingleBookmark() {
     if (id) getCurrentBookmark(id);
   }, [id]);
 
-  if (isLoadingCurrBookmark) return <Loading />;
+  if (isLoading) return <Loading />;
 
   if (!currentBookmark)
     return (
@@ -25,21 +24,13 @@ function SingleBookmark() {
     );
 
   return (
-    <div className="max-w-4xl mx-auto p-8 bg-white rounded-3xl shadow-2xl space-y-8">
+    <div className="w-full mx-auto p-8 bg-white rounded-3xl shadow-2xl space-y-8">
       {/* 🏙 نام و کشور */}
-      <div className="flex items-center justify-between gap-6">
-        <div className="flex items-center gap-5">
-          <span className="text-4xl">
-            <ReactCountryFlag svg countryCode={currentBookmark.countryCode} />
-          </span>
-          <div>
-            <h2 className="text-3xl font-bold">{currentBookmark.cityName}</h2>
-            <p className="text-gray-500 italic text-sm">
-              {currentBookmark.host_location}
-            </p>
-          </div>
+      <div className="flex items-center justify-between ">
+        <div className="text-4xl flex">
+          <ReactCountryFlag svg countryCode={currentBookmark.countryCode} />
+          <h2 className="text-3xl font-bold ml-2">{currentBookmark.city}</h2>
         </div>
-
         <button
           onClick={() => navigate(-1)}
           className="w-8 h-8 bg-gray-400 hover:bg-red-600 transition-colors rounded-full flex items-center justify-center shadow-md cursor-pointer"
@@ -47,24 +38,25 @@ function SingleBookmark() {
           <ChevronLeftIcon className="text-white w-6 h-6" />
         </button>
       </div>
+      <div className="text-gray-500 italic text-sm flex justify-between my-5">
+        <span>{currentBookmark.country}</span>
+        <span>{currentBookmark.province}</span>
+        <span>{currentBookmark.district}</span>
+      </div>
 
-      {/* 📍 مختصات و ارتفاع */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 bg-gray-50 p-6 rounded-xl shadow-inner text-sm font-medium">
+      {/* 📍 مختصات و تایم‌زون */}
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-6 bg-gray-50 p-6 rounded-xl shadow-inner text-sm font-medium">
         <p>
           Latitude:{" "}
           <span className="font-semibold">
-            {currentBookmark.latitude.slice(0, 10)}
+            {String(currentBookmark.latitude).slice(0, 10)}
           </span>
         </p>
         <p>
           Longitude:{" "}
           <span className="font-semibold">
-            {currentBookmark.longitude.slice(0, 10)}
+            {String(currentBookmark.longitude).slice(0, 10)}
           </span>
-        </p>
-        <p>
-          Elevation:{" "}
-          <span className="font-semibold">{currentBookmark.elevation} m</span>
         </p>
         <p>
           Timezone:{" "}
@@ -72,74 +64,40 @@ function SingleBookmark() {
         </p>
       </div>
 
-      {/* 👥 جمعیت و مساحت */}
+      {/* 🌍 قاره و کدها */}
       <div className="grid grid-cols-2 gap-6 text-sm font-medium">
         <p>
-          Population:{" "}
-          <span className="text-gray-700">
-            {currentBookmark.population.toLocaleString()}
-          </span>
+          Continent:{" "}
+          <span className="text-gray-700">{currentBookmark.continent}</span>
         </p>
         <p>
-          Area:{" "}
-          <span className="text-gray-700">{currentBookmark.area} km²</span>
+          Province Code:{" "}
+          <span className="text-gray-700">{currentBookmark.provinceCode}</span>
+        </p>
+        <p>
+          County:{" "}
+          <span className="text-gray-700">{currentBookmark.county}</span>
+        </p>
+        <p>
+          Lookup Source:{" "}
+          <span className="text-gray-700">{currentBookmark.lookupSource}</span>
         </p>
       </div>
 
-      {/* 🌦 آب و هوا */}
-      <div className="bg-gradient-to-r from-blue-100 via-blue-50 to-blue-100 p-6 rounded-2xl text-sm shadow-md">
-        <h3 className="font-semibold mb-3 text-blue-800 text-lg">Weather 🌤</h3>
-        <p>
-          🌡 Avg Temp:{" "}
-          <span className="font-medium">
-            {currentBookmark.weather.averageTempC}°C
-          </span>
-        </p>
-        <p>
-          ☔ Rainfall:{" "}
-          <span className="font-medium">
-            {currentBookmark.weather.rainfallMmPerYear} mm/year
-          </span>
-        </p>
-        <p>
-          🌍 Conditions:{" "}
-          <span className="font-medium">
-            {currentBookmark.weather.conditions}
-          </span>
-        </p>
-      </div>
-
-      {/* 🗣 زبان و 💰 ارز */}
+      {/* ➕ PlusCode و Locality Language */}
       <div className="grid grid-cols-2 gap-6 text-sm font-medium">
+        {currentBookmark.plusCode && (
+          <p>
+            Plus Code:{" "}
+            <span className="text-gray-700">{currentBookmark.plusCode}</span>
+          </p>
+        )}
         <p>
-          Language:{" "}
+          Language Requested:{" "}
           <span className="text-gray-700">
-            {currentBookmark.officialLanguage}
+            {currentBookmark.localityLanguageRequested}
           </span>
         </p>
-        <p>
-          Currency:{" "}
-          <span className="text-gray-700">{currentBookmark.currency}</span>
-        </p>
-      </div>
-
-      {/* 🏛 مکان معروف */}
-      <div className="text-sm font-medium">
-        Landmark:{" "}
-        <span className="text-gray-700">{currentBookmark.landmark}</span>
-      </div>
-
-      {/* 🏘 شهرهای همسایه */}
-      <div className="text-sm font-medium">
-        <h3 className="mb-2 font-semibold">Nearby Cities 🏘</h3>
-        <ul className="list-disc list-inside space-y-1">
-          {currentBookmark.neighboringCities?.map((city, index) => (
-            <li key={index}>
-              {city.name}{" "}
-              <span className="text-gray-400">({city.distanceKm} km)</span>
-            </li>
-          ))}
-        </ul>
       </div>
     </div>
   );
