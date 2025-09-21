@@ -1,5 +1,8 @@
 import {
+  ArrowLeftEndOnRectangleIcon,
+  BookmarkIcon,
   CalendarIcon,
+  HomeIcon,
   MagnifyingGlassIcon,
   MapPinIcon,
   UsersIcon,
@@ -62,13 +65,19 @@ function AppHeader() {
       {/* Logo / Home */}
       <button
         onClick={() => navigate("/")}
-        className="text-3xl font-bold text-gray-700 hover:text-red-500 transition cursor-pointer"
+        className="text-3xl font-bold text-gray-700 hover:text-red-500 transition cursor-pointer bg-gray-100 p-5 rounded-full "
       >
-        MyBooking
+        <HomeIcon className="w-7 h-7" />
+      </button>
+      <button
+        onClick={() => navigate("/bookmark")}
+        className="text-3xl font-bold text-gray-700 hover:text-red-500 transition cursor-pointer bg-gray-100 p-5 rounded-full mx-5"
+      >
+        <BookmarkIcon className="w-7 h-7" />
       </button>
 
       {/* Search bar & function to get location data from user */}
-      <div className="flex items-center flex-1 max-w-5xl border border-gray-200 rounded-full shadow-lg py-3 px-6 gap-x-6 bg-white">
+      <div className="flex flex-1 items-center max-w-5xl border border-gray-200 rounded-full shadow-lg py-3 px-6 gap-x-6 bg-white">
         {/* Location */}
         <div className="flex items-center gap-x-2 flex-1 border-r pr-4">
           <MapPinIcon className="w-9 h-9 text-red-500" />
@@ -138,6 +147,12 @@ function AppHeader() {
           <MagnifyingGlassIcon className="w-6 h-6" />
         </button>
       </div>
+      <button
+        onClick={() => navigate("/login")}
+        className="text-3xl font-bold text-gray-700 hover:text-red-500 transition cursor-pointer bg-gray-100 p-5 rounded-full mx-5"
+      >
+        <ArrowLeftEndOnRectangleIcon className="w-7 h-7" />
+      </button>
     </div>
   );
 }
