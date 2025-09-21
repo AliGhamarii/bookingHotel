@@ -1,9 +1,18 @@
 import { Link } from "react-router-dom";
 import useBookmark from "../../hooks/useBookmark";
 import ReactCountryFlag from "react-country-flag";
+import { TrashIcon } from "@heroicons/react/24/solid";
 
 function Bookmark() {
-  const { bookmarks, currentBookmark } = useBookmark();
+  const { bookmarks, currentBookmark, deleteBookmark } = useBookmark();
+
+  const handleDelete = async (e, id) => {
+    e.preventDefault();
+    await deleteBookmark(id);
+  };
+
+  if (!bookmarks.length)
+    return <p className="text-center">You have no any Bookmark</p>;
 
   return (
     <div className="w-full h-[700px] p-6 overflow-auto">
@@ -16,6 +25,7 @@ function Bookmark() {
           return (
             <Link
               key={item.id}
+              className="relative"
               to={`${item.id}?lat=${item.latitude}&lng=${item.longitude}`}
             >
               <div
@@ -32,9 +42,18 @@ function Bookmark() {
 
                 {/* city + country */}
                 <div className="flex flex-col">
-                  <span className="text-lg font-semibold text-gray-800">{item.city}</span>
+                  <span className="text-lg font-semibold text-gray-800">
+                    {item.city}
+                  </span>
                   <span className="text-sm text-gray-500">{item.country}</span>
                 </div>
+                {/* delete  */}
+                <button
+                  onClick={(e) => handleDelete(e, item.id)}
+                  className="absolute right-5 cursor-pointer"
+                >
+                  <TrashIcon className="w-7 h-7 text-red-500" />
+                </button>
               </div>
             </Link>
           );
