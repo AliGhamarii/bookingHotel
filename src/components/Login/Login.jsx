@@ -10,8 +10,7 @@ function Login() {
         <h2 className="text-center font-bold text-2xl mb-6 text-gray-800">
           Welcome back
         </h2>
-        <form action="">
-          {" "}
+        <form action="" onSubmit={(e) => e.preventDefault()}>
           <div className="flex flex-col mb-5">
             <label
               htmlFor="email"
