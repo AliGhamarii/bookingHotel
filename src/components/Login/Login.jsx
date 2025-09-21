@@ -1,8 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import useAuth from "../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("ali@test.com");
+  const [password, setPassword] = useState("1234");
+  const { login, isAuthenticated } = useAuth();
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (email && password) login(email, password);
+  };
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/", { replace: true });
+    }
+  }, [isAuthenticated, navigate]);
 
   return (
     <div className="w-full h-[700px] flex justify-center items-center bg-gradient-to-br from-blue-100 to-purple-200">
@@ -10,7 +25,7 @@ function Login() {
         <h2 className="text-center font-bold text-2xl mb-6 text-gray-800">
           Welcome back
         </h2>
-        <form action="" onSubmit={(e) => e.preventDefault()}>
+        <form action="" onSubmit={handleSubmit}>
           <div className="flex flex-col mb-5">
             <label
               htmlFor="email"

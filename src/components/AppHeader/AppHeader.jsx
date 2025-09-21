@@ -1,5 +1,6 @@
 import {
   ArrowLeftEndOnRectangleIcon,
+  ArrowLeftStartOnRectangleIcon,
   BookmarkIcon,
   CalendarIcon,
   HomeIcon,
@@ -18,6 +19,7 @@ import {
   useNavigate,
   useSearchParams,
 } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 function AppHeader() {
   //hooks
@@ -35,6 +37,7 @@ function AppHeader() {
       key: "selection",
     },
   ]);
+  const { user, isAuthenticated, logout } = useAuth();
 
   // functions.
   // set a new object for Guests component
@@ -57,6 +60,12 @@ function AppHeader() {
     });
     // setSearchParams(encodedParams);
     navigate({ pathname: "/hotels", search: encodedParams.toString() });
+  };
+
+  //logout user
+  const handleLogout = () => {
+    logout();
+    navigate("/", { replace: true });
   };
 
   // jsx
@@ -147,12 +156,26 @@ function AppHeader() {
           <MagnifyingGlassIcon className="w-6 h-6" />
         </button>
       </div>
-      <button
-        onClick={() => navigate("/login")}
-        className="text-3xl font-bold text-gray-700 hover:text-red-500 transition cursor-pointer bg-gray-100 p-5 rounded-full mx-5"
-      >
-        <ArrowLeftEndOnRectangleIcon className="w-7 h-7" />
-      </button>
+      {isAuthenticated ? (
+        <div className="flex items-center">
+          <div className="w-5 h-8 p-8 bg-gray-100 flex justify-center items-center rounded-full mx-5">
+            {user.name}
+          </div>
+          <div
+            onClick={handleLogout}
+            className="w-16 h-16 bg-gray-100 flex justify-center items-center rounded-full cursor-pointer"
+          >
+            <ArrowLeftStartOnRectangleIcon className="w-8 h-8 text-xl" />
+          </div>
+        </div>
+      ) : (
+        <button
+          onClick={() => navigate("/login")}
+          className="text-3xl font-bold text-gray-700 hover:text-red-500 transition cursor-pointer bg-gray-100 p-5 rounded-full mx-5"
+        >
+          <ArrowLeftEndOnRectangleIcon className="w-7 h-7" />
+        </button>
+      )}
     </div>
   );
 }

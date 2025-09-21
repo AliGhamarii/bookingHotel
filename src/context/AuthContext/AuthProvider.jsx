@@ -4,7 +4,8 @@ import AuthContext from "./AuthContext";
 const initialStateReducer = { user: null, isAuthenticated: false };
 
 const fake_user = {
-  email: "shadow@gmail.com",
+  name: "Ali",
+  email: "ali@test.com",
   password: "1234",
 };
 
@@ -20,7 +21,8 @@ function authReducer(state, action) {
         isAuthenticated: false,
         user: null,
       };
-      default: throw new Error("Unknown action!")
+    default:
+      throw new Error("Unknown action!");
   }
 }
 
@@ -36,14 +38,12 @@ function AuthProvider({ children }) {
     }
   }
 
-  function logout(email, password) {
-    if (email === fake_user.email && password === fake_user.password) {
-      dispatch({ type: "logout" });
-    }
+  function logout() {
+    dispatch({ type: "logout" });
   }
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, user, login, logout }}>
+    <AuthContext.Provider value={{ user, isAuthenticated, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
